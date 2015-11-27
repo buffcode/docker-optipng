@@ -71,12 +71,23 @@ Examples:
     optipng -i1 -o7 -v -full -sim experiment.png
 ``` 
 
-### Compress a single image
+### Optimize all images in current folder
+By default this image will compress run OptiPNG with `-quiet -o7 *.png` and as such will optimize all images with the best optimization level.
+```
+$ docker run -v /local-path-to-image:/source buffcode/docker-optipng
+```
+is identical to the command
+```
+$ docker run -v /local-path-to-image:/source buffcode/docker-optipng -quiet -o7 *.png
+```
+
+### Optimize a single image
 ```
 $ docker run -v /local-path-to-image:/source buffcode/docker-optipng -o7 image.png
 ```
 
-### Compress all image within folder
+### Recursivley optimize all images
+The following command finds all images in the current folder (`find...`), mounts it to the Docker volume (`-v ...`) and optimizes the image with the best optimization level (`-o7`).
 ```
-$ docker run -v /local-path-to-image:/source buffcode/docker-optipng -o7 *.png
+$ find . -name "*.png" | xargs docker run -t -v `pwd`:/source buffcode/docker-optipng -o7
 ```
