@@ -8,4 +8,6 @@ RUN apt-get update -y && apt-get install -y optipng
 RUN mkdir -p /source
 WORKDIR /source
 
+RUN shopt -s globstar
+
 ENTRYPOINT ["optipng"]
