@@ -10,8 +10,10 @@ RUN apt-get update -qqy && \
     apt-get install -qqy --no-install-recommends optipng && \
     \
     # cleanup
-    apt-get remove -qqy lsb-release && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get remove --purge -y lsb-release $( apt-mark showauto ) && \
+    apt-get autoremove -y && \
+    apt-get clean -y && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN mkdir -p /source
 WORKDIR /source
