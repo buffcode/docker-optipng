@@ -12,7 +12,7 @@ If OptiPNG can optimize the input file it will be overwritten with the optimized
 
 ## Run
 ```
-$ docker run buffcode/docker-optipng -- -help
+$ docker run buffcode/docker-optipng -help
 OptiPNG 0.6.4: Advanced PNG optimizer.
 Copyright (C) 2001-2010 Cosmin Truta.
 
